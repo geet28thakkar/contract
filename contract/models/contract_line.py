@@ -33,6 +33,7 @@ class ContractLine(models.Model):
         ondelete="cascade",
     )
     currency_id = fields.Many2one(related="contract_id.currency_id")
+    is_terminated = fields.Boolean(related="contract_id.is_terminated")
     date_start = fields.Date(required=True)
     date_end = fields.Date(compute="_compute_date_end", store=True, readonly=False)
     termination_notice_date = fields.Date(

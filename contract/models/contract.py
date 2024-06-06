@@ -511,7 +511,8 @@ class ContractContract(models.Model):
 
         def can_be_invoiced(contract_line):
             return (
-                not contract_line.is_canceled
+                not contract_line.is_terminated
+                and not contract_line.is_canceled
                 and contract_line.recurring_next_date
                 and contract_line.recurring_next_date <= date_ref
                 and contract_line.next_period_date_start
