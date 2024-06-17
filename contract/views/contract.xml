@@ -196,8 +196,8 @@
                                 context="{'default_contract_type': contract_type, 'default_recurring_rule_type': recurring_rule_type, 'default_recurring_invoicing_type': recurring_invoicing_type, 'default_recurring_interval': recurring_interval, 'default_date_start': date_start, 'default_recurring_next_date': recurring_next_date}"
                             >
                                 <tree
-                                    decoration-info="create_invoice_visibility and not is_canceled and not is_terminated"
-                                    decoration-muted="is_canceled or is_terminated"
+                                    decoration-info="create_invoice_visibility and not is_canceled"
+                                    decoration-muted="is_canceled"
                                     editable="bottom"
                                 >
                                     <control>
@@ -276,8 +276,8 @@
                                 context="{'default_contract_type': contract_type}"
                             >
                                 <tree
-                                    decoration-muted="is_canceled or is_terminated"
-                                    decoration-info="create_invoice_visibility and not is_canceled and not is_terminated"
+                                    decoration-muted="is_canceled"
+                                    decoration-info="create_invoice_visibility and not is_canceled"
                                 >
                                     <control>
                                         <create string="Add a line" />
@@ -346,7 +346,6 @@
                                     <field name="is_un_cancel_allowed" invisible="1" />
                                     <field name="is_auto_renew" invisible="1" />
                                     <field name="is_canceled" invisible="1" />
-                                    <field name="is_terminated" invisible="1" />
                                     <button
                                         name="action_plan_successor"
                                         string="Plan Start"

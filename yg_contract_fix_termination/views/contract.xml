@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Main FORM view-->
+    <record id="contract_contract_form_view_inherits_yg_contract_fix_termination" model="ir.ui.view">
+        <field name="name">contract.contract form view (in contract) fix termination</field>
+        <field name="model">contract.contract</field>
+        <field name="inherit_id" ref="contract.contract_contract_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/div" position="before">
+                <field name="is_terminated" invisible="1" />
+            </xpath>
+            <xpath expr="//notebook//page[@name='recurring_invoice_line']//field[@name='contract_line_fixed_ids']//tree" position="attributes">
+                <attribute name="decoration-info">create_invoice_visibility and not is_canceled and not is_terminated</attribute>
+                <attribute name="decoration-muted">is_canceled or is_terminated</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='recurring_invoice_line']//field[@name='contract_line_fixed_ids']//tree" position="inside">
+                <field name="is_terminated" invisible="1" />
+            </xpath>
+            <xpath expr="//notebook//page[@name='recurring_invoice_line']//field[@name='contract_line_ids']//tree" position="attributes">
+                <attribute name="decoration-info">create_invoice_visibility and not is_canceled and not is_terminated</attribute>
+                <attribute name="decoration-muted">is_canceled or is_terminated</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='recurring_invoice_line']//field[@name='contract_line_ids']//tree" position="inside">
+                <field name="is_terminated" invisible="1" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

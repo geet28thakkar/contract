@@ -11,9 +11,11 @@
     'author': 'Yves Goldberg (Ygol InternetWork)',
     'website': 'https://www.ygol.com',
     'depends': [
+        'contract'
     ],
     'external_dependencies': {"python": [], "bin": []},
     'data': [
+        "views/contract.xml",
     ],
     'demo': [
     ],
