@@ -19,6 +19,6 @@ class AccountMove(models.Model):
         updated_invoice_date = vals.get('invoice_date', False)
         for rec in self:
             contract_id = rec.invoice_line_ids.contract_line_id.contract_id
-            if updated_invoice_date and datetime.strptime(updated_invoice_date, DF).date() > contract_id.date_end:
+            if updated_invoice_date and contract_id.date_end and datetime.strptime(updated_invoice_date, DF).date() > contract_id.date_end:
                 raise UserError("You can change the invoice date only if it is before the contract end date.")
         return super(AccountMove, self).write(vals)

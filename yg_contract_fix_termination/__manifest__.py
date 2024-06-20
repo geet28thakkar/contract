@@ -6,7 +6,7 @@
     'name': 'Yg Contract Fix Termination',
     'description': """
         Fix termination bug""",
-    'version': '16.0.1.0.0',
+    'version': '16.0.1.0.1',
     'license': 'Other proprietary',
     'author': 'Yves Goldberg (Ygol InternetWork)',
     'website': 'https://www.ygol.com',
