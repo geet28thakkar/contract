@@ -162,7 +162,8 @@ class ContractContract(models.Model):
     @api.constrains('company_id')
     def _check_related_companies(self):
         """
-            Constrains to check the company with many2one records which are having company in it
+            Constrains to check the company with many2one records
+             which are having company in it
             returns: None, raise error
         """
         for record in self:
@@ -171,10 +172,13 @@ class ContractContract(models.Model):
                 if isinstance(field, fields.Many2one):
                     related_model = self.env[field.comodel_name]
                     related_record = getattr(record, field_name)
-
-                    if related_record and 'company_id' in related_model._fields and related_record.company_id.id != company_id:
+                    if (related_record and related_record.company_id and
+                        'company_id' in related_model._fields and
+                        related_record.company_id.id != company_id):
                         raise ValidationError(
-                            f"The company for {field.string} does not match the company of this record.")
+                            f"The company for {field.string} does not match "
+                            f"the company of this record."
+                        )
 
     @api.model
     def _set_start_contract_modification(self):
